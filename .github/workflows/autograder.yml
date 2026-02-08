@@ -1,0 +1,16 @@
+name: SQL Autograder
+
+on: [push]
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install SQLite
+        run: sudo apt-get install sqlite3
+
+      - name: Run grader
+        run: bash .grader/grade.sh
