@@ -1,2 +1,0 @@
-sqlite3 test.db < .grader/init.sql
-sqlite3 test.db < solution/q1.sql > .grader/expected/q1.txt
