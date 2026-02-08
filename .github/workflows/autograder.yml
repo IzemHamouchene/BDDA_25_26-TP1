@@ -1,5 +1,4 @@
 name: SQL Autograder
-
 on: [push]
 
 jobs:
@@ -12,5 +11,13 @@ jobs:
       - name: Install SQLite
         run: sudo apt-get install sqlite3
 
+      - name: Recreate grader script from secret
+        run: echo "$GRADER_SCRIPT" > grader.sh
+        env:
+          GRADER_SCRIPT: ${{ secrets.GRADER_SCRIPT }}
+
       - name: Run grader
-        run: bash .grader/grade.sh
+        run: bash grader.sh
+        env:
+          INIT_SQL: ${{ secrets.INIT_SQL }}
+          SOL_Q1: ${{ secrets.SOL_Q1 }}
