@@ -1,1 +1,1 @@
-select id from student
+select id from Students
